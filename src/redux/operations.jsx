@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 // EVA DB axios.defaults.baseURL = 'https://64b01d3dc60b8f941af54048.mockapi.io/api/v1/';
-axios.defaults.baseURL = 'https://64b1a2bf062767bc48267982.mockapi.io/api/v1/';
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 export const fetchAllContacts = createAsyncThunk(
   'contacts/fetchAll',
@@ -39,15 +39,15 @@ export const deleteContact = createAsyncThunk(
   }
 );
 
-export const existContacts = createAsyncThunk(
-  'contacts/existingContacts',
-  async (data, thunkAPI) => {
-    try {
-      const body = { name: data.name, number: data.number };
-      const response = await axios.patch(`/contacts/${data.id}`, body);
-      return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
-    }
-  }
-);
+// export const existContacts = createAsyncThunk(
+//   'contacts/existingContacts',
+//   async (data, thunkAPI) => {
+//     try {
+//       const body = { name: data.name, number: data.number };
+//       const response = await axios.patch(`/contacts/${data.id}`, body);
+//       return response.data;
+//     } catch (e) {
+//       return thunkAPI.rejectWithValue(e.message);
+//     }
+//   }
+// );

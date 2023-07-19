@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ContactForm } from '../components/ContactForm/ContactForm';
 import { ContactList } from '../components/ContactList/ContactList';
 import { ContactFind } from '../components/ContactFind/ContactFind';
-//import { useEffect } from 'react';
 import { fetchAllContacts } from 'redux/operations';
 import { selectIsLoading, selectError } from 'redux/selectors';
 

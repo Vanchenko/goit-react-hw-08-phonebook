@@ -7,7 +7,8 @@ export const ContactItem = ({ id, name, number }) => {
   const dispatch = useDispatch();
     const handleDelete = () => dispatch(deleteContact(id));
  return (
-        <li className={css.list_item} >{`${name} : ${number}`}
+        <li className={css.list_item} >
+            <p className={css.textitem}>{`${name} : ${number}`}</p>
             <button
                 className={css.delete_btn}
                 type="button"
