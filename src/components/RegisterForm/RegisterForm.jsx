@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/Auth-opertions';
+import { toast } from 'react-hot-toast'
 import css from './RegisterForm.module.css';
 
 export const RegisterForm = () => {
@@ -8,13 +9,14 @@ export const RegisterForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
-    dispatch(
-      register({
+    dispatch(register({
         name: form.elements.name.value,
         email: form.elements.email.value,
         password: form.elements.password.value,
-      })
-    );
+      }))
+      .unwrap()
+      .then(() => toast.success('Operation successfully!'))
+      .catch(() => toast.error('Something went wrong... Try again.'));
     form.reset();
   };
 

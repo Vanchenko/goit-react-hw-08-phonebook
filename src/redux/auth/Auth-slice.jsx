@@ -4,7 +4,6 @@ import {
   logIn,
   logOut,
   refreshUser,
-  editAvatar,
 } from './Auth-opertions';
 
 const initialState = {
@@ -36,13 +35,6 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
       })
       .addCase(logIn.rejected, (state, action) => state)
-
-      // editAvatar user
-      .addCase(editAvatar.pending, (state, action) => state)
-      .addCase(editAvatar.fulfilled, (state, action) => {
-        state.user.avatarURL = action.payload;
-      })
-      .addCase(editAvatar.rejected, (state, action) => state)
 
       // logout user
       .addCase(logOut.pending, (state, action) => state)

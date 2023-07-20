@@ -1,24 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchAllContacts, addContact, deleteContact } from './operations';
 
-// const handlePending = state => {
-//   //console.log('handlePending :', state.isLoading)
-//   state.isLoading = true;
-// };
-
-// const handleRejected = (state, action) => {
-//   state.isLoading = false;
-//   state.error = action.payload;
-// };
-
+const initialState = {
+  items: [],
+  isLoading: false,
+  error: null,
+};
 
 const contactSlice = createSlice({
   name: 'contacts',
-  initialState: {
-    items: [],
-    isLoading: false,
-    error: null,
-  },
+  initialState,
   extraReducers: builder =>
     builder
       .addCase(fetchAllContacts.pending, (state, action) => {

@@ -15,6 +15,7 @@ export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
     try {
+      console.log('register params:', credentials);
       const response = await axios.post('/users/signup', credentials);
       setAuthHeader(response.data.token);
       return response.data;
@@ -65,18 +66,4 @@ export const refreshUser = createAsyncThunk(
   }
 );
 
-export const editAvatar = createAsyncThunk(
-  'auth/avatars',
-  async (file, thunkAPI) => {
-    try {
-      const formData = new FormData();
-      formData.append('avatar', file);
-      const response = await axios.patch('users/avatars', formData, {
-        headers: { 'content-type': 'multipart/form-data' },
-      });
-      return response.data.avatarURL;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
+
